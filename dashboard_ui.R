@@ -13,11 +13,31 @@
 #'
 #' @return A Shiny UI object representing the dashboard content.
 dashboard_ui <- function() {
-
-  # Example UI content:
+  
   tagList(
-    h2("Dashboard content"),
-    p("This is where you can add your dashboard's UI elements."),
-    p("Use Shiny's UI functions to create interactive components, visualizations, and more.")
+
+    fluidRow(
+      column(
+        width = 4,
+        textInput(
+          inputId = "inst_code",
+          label   = "Bitte geben Sie hier Ihren KITA‑Code ein:",
+        ),
+        actionButton(
+          inputId = "lookup_btn",
+          label   = "Resultate anzeigen",
+          icon    = icon("search")
+        )
+      )
+    ),
+    
+    fluidRow(
+      column(
+        width = 12,
+        h3("Ergebnis‑Tabelle"),
+        # No sanitize argument here – it belongs to renderTable()
+        tableOutput(outputId = "result_table")
+      )
+    )
   )
 }
