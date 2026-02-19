@@ -1,0 +1,9 @@
+title: "Dashboard title"
+
+brand: "black" # options are: standard | black
+
+legal_notice:
+  - "ZHAW Zürcher Hochschule für Angewandte Wissenschaften"
+  - "Soziale Arbeit"
+  - "Institut für Kindheit, Jugend und Familie"
+  - "Contact"

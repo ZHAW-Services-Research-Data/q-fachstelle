@@ -1,0 +1,104 @@
+/* Application Stylesheet.
+
+   Defines layout and structural styles for the ZHAW
+   Shiny dashboard template.
+
+   This file contains presentation rules only.
+   Branding decisions and runtime logic are handled in R.
+*/
+
+
+/* Design tokens (global spacing variables) */
+:root {
+  --app-padding-y: 10px;
+  --app-padding-x: 20px;
+}
+
+
+/* Global typography and base layout reset */
+html, body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  height: 100%;
+  margin: 0;
+}
+
+
+/* Ensure Shiny elements inherit global typography */
+.container,
+.container-fluid,
+.nav,
+.nav-tabs,
+.nav-link,
+.tab-content,
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+
+/* Links */
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* Tabs */
+.nav-tabs {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.nav-tabs .nav-link {
+  background-color: #ffffff;
+  border: none;
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom: 2px solid #000000;
+}
+
+
+/* Main application layout container */
+.app-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Header section containing logo and title */
+.app-header {
+  padding: var(--app-padding-y) var(--app-padding-x);
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+
+/* Main content wrapper between header and footer */
+.app-content {
+  padding: var(--app-padding-y) var(--app-padding-x);
+  flex: 1; /* push footer to bottom */
+}
+
+
+/* Footer section containing legal and institutional information */
+.app-footer {
+  padding: var(--app-padding-y) var(--app-padding-x);
+  background-color: #ffffff;
+  border-top: 1px solid #e6e6e6;
+  font-size: 12px;
+  line-height: 1;
+  text-align: left;
+  color: #0064A8;
+}
