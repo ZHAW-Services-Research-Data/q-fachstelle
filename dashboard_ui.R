@@ -2,7 +2,6 @@
 # Dashboard UI -- *TO BE EDITED*
 #
 # Defines UI and dashboard content.
-#
 # -----------------------------------------------------------------------------
 
 #' Dashboard UI
@@ -13,15 +12,15 @@
 #'
 #' @return A Shiny UI object representing the dashboard content.
 dashboard_ui <- function() {
-  
   tagList(
-
+    
+    # Row 1
     fluidRow(
       column(
         width = 4,
         textInput(
           inputId = "inst_code",
-          label   = "Bitte geben Sie hier Ihren KITA‑Code ein:",
+          label   = "Bitte geben Sie Ihren KITA‑Umfragecode ein:",
         ),
         actionButton(
           inputId = "lookup_btn",
@@ -31,12 +30,19 @@ dashboard_ui <- function() {
       )
     ),
     
+    # Row 2
     fluidRow(
       column(
         width = 12,
-        h3("Ergebnis‑Tabelle"),
-        # No sanitize argument here – it belongs to renderTable()
-        tableOutput(outputId = "result_table")
+        
+        uiOutput("result_heading"),
+        uiOutput("result_caption"),
+                tableOutput(outputId = "result_table"),
+        
+        uiOutput("overall_heading"),
+        uiOutput("overall_caption"),
+        
+        tableOutput(outputId = "overall_table")
       )
     )
   )

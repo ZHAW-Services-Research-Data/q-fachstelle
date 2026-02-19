@@ -1,6 +1,6 @@
 title: "SELE – Selbsteinschätzung der Qualität in Zürcher KITAs"
 
-brand: "black" # options are: standard | black
+brand: "standard" # options are: standard | black
 
 legal_notice:
   - "ZHAW Zürcher Hochschule für Angewandte Wissenschaften"
