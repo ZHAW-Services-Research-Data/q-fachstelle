@@ -37,7 +37,7 @@ dashboard_ui <- function() {
         
         uiOutput("result_heading"),
         uiOutput("result_caption"),
-                tableOutput(outputId = "result_table"),
+        tableOutput(outputId = "result_table"),
         
         uiOutput("overall_heading"),
         uiOutput("overall_caption"),

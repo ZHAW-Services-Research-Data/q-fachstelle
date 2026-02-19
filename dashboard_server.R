@@ -120,9 +120,9 @@ dashboard_server <- function(input, output, session) {
         .groups = "drop"
       ) %>%
       rename(
-        Jahr                     = year,
-        `Anzahl Bewertungen`     = n,
-        Bildung                  = bildung_qual_mean,
+        Jahr = year,
+        `Anzahl Bewertungen` = n,
+        Bildung = bildung_qual_mean,
         `Interaktion und Kommunikation` = inter_kommun_qual_mean,
         `Inklusion, Integration und Partizipation` = inkl_integ_parti_qual_mean,
         `Eltern- und Familienzusammenarbeit` = elternzusammenarbeit_qual_mean
@@ -133,7 +133,7 @@ dashboard_server <- function(input, output, session) {
     
     # Second summary -- all KITAs for the same years
     summary_by_certain_years_all_Kitas <- data_clean %>%
-      filter(year %in% relevant_years) %>%      # keep only the years we just found
+      filter(year %in% relevant_years) %>%
       group_by(year) %>%
       summarise(
         n = n(),
@@ -145,9 +145,9 @@ dashboard_server <- function(input, output, session) {
         .groups = "drop"
       ) %>%
       rename(
-        Jahr                     = year,
-        `Anzahl Bewertungen`     = n,
-        Bildung                  = bildung_qual_mean,
+        Jahr = year,
+        `Anzahl Bewertungen` = n,
+        Bildung = bildung_qual_mean,
         `Interaktion und Kommunikation` = inter_kommun_qual_mean,
         `Inklusion, Integration und Partizipation` = inkl_integ_parti_qual_mean,
         `Eltern- und Familienzusammenarbeit` = elternzusammenarbeit_qual_mean
