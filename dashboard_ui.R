@@ -42,7 +42,11 @@ dashboard_ui <- function() {
         uiOutput("overall_heading"),
         uiOutput("overall_caption"),
 
-        tableOutput(outputId = "overall_table")
+        tableOutput(outputId = "overall_table"),
+
+        hr(),
+        uiOutput("radar_heading"),
+        uiOutput("radar_ui")
       )
     )
   )

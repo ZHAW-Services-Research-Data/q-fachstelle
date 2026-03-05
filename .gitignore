@@ -46,3 +46,4 @@ vignettes/*.pdf
 /config
 /config/secrets.yml
 /archive
+data_processing.R
