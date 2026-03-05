@@ -13,7 +13,6 @@
 #' @return A Shiny UI object representing the dashboard content.
 dashboard_ui <- function() {
   tagList(
-    
     # Row 1: Input for KITA code and lookup button
     fluidRow(
       column(
@@ -34,16 +33,12 @@ dashboard_ui <- function() {
     fluidRow(
       column(
         width = 12,
-
         uiOutput("result_heading"),
         uiOutput("result_caption"),
         tableOutput(outputId = "result_table"),
-
         uiOutput("overall_heading"),
         uiOutput("overall_caption"),
-
         tableOutput(outputId = "overall_table"),
-
         hr(),
         uiOutput("radar_heading"),
         uiOutput("radar_ui")

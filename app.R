@@ -22,7 +22,7 @@ source("dashboard_ui.R")
 source("dashboard_server.R")
 
 brand_class <- paste0("brand-", config$brand)
-logo_file   <- paste0("logo-", config$brand, ".png")
+logo_file <- paste0("logo-", config$brand, ".png")
 
 ui <- fluidPage(
   tags$head(
@@ -30,16 +30,13 @@ ui <- fluidPage(
   ),
   div(
     class = paste("app-page", brand_class),
-
     corporate_header(
       title = config$title,
       logo  = logo_file
     ),
-
     corporate_content(
       dashboard_ui()
     ),
-
     corporate_footer(
       brand = config$brand,
       render_legal_notice(config$legal_notice)

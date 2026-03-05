@@ -48,7 +48,7 @@ QUALITY_COLS <- c(
 )
 
 COL_BENCHMARK <- "#DD8452"
-COL_INST      <- "#4C72B0"
+COL_INST <- "#8172B2"
 
 
 # Data loading & cleaning -------------------------------------------------
@@ -69,16 +69,16 @@ data <- raw |>
 
 ## Institution -------------------------------------------------------------
 
-inst_code  <- "kinderhausimago"
+inst_code <- "kinderhausimago"
 inst_clean <- normalize_code(inst_code)
 
-inst_data    <- data |> filter(code_clean == inst_clean)
+inst_data <- data |> filter(code_clean == inst_clean)
 inst_summary <- summarise_by_year(inst_data)
 
 ## Benchmark (all KITAs, same years) ---------------------------------------
 
-relevant_years    <- inst_summary$Jahr
-n_plots           <- length(relevant_years)
+relevant_years <- inst_summary$Jahr
+n_plots <- length(relevant_years)
 
 benchmark_summary <- data |>
   filter(year %in% relevant_years) |>
@@ -90,39 +90,42 @@ benchmark_summary <- data |>
 par(mfrow = c(1, n_plots), mar = c(2, 2, 3, 2))
 
 for (yr in relevant_years) {
-  
-  bench_row <- benchmark_summary |> filter(Jahr == yr) |> select(all_of(QUALITY_COLS))
-  inst_row  <- inst_summary      |> filter(Jahr == yr) |> select(all_of(QUALITY_COLS))
-  
+  bench_row <- benchmark_summary |>
+    filter(Jahr == yr) |>
+    select(all_of(QUALITY_COLS))
+  inst_row <- inst_summary |>
+    filter(Jahr == yr) |>
+    select(all_of(QUALITY_COLS))
+
   radar_df <- rbind(
-    setNames(as.data.frame(matrix(5, nrow = 1, ncol = 4)), QUALITY_COLS),  # max
-    setNames(as.data.frame(matrix(1, nrow = 1, ncol = 4)), QUALITY_COLS),  # min
+    setNames(as.data.frame(matrix(5, nrow = 1, ncol = 4)), QUALITY_COLS), # max
+    setNames(as.data.frame(matrix(1, nrow = 1, ncol = 4)), QUALITY_COLS), # min
     bench_row,
     inst_row
   )
-  
+
   radarchart(
     radar_df,
-    axistype   = 1,            # label style: 1 = labels on first axis only
-    seg        = 4,            # number of gridline rings (1-5 scale = 4 gaps)
-    vlabels    = RADAR_VARNAMES,  # axis label text
-    vlcex      = 0.85,         # axis label font size
-    pcol       = c(COL_INST, COL_BENCHMARK),  # polygon border colors
-    pfcol      = adjustcolor(c(COL_INST, COL_BENCHMARK), alpha.f = 0.25),  # polygon fill (transparent)
-    plwd       = 2,            # polygon border line width
-    cglcol     = "grey70",     # grid line color
-    cglty      = 1,            # grid line type (1 = solid)
-    axislabcol = "grey40",     # axis scale label color
-    title      = paste("Qualitätsbewertung", yr)  # plot title
+    axistype   = 1, # label style: 1 = labels on first axis only
+    seg        = 4, # number of gridline rings (1-5 scale = 4 gaps)
+    vlabels    = RADAR_VARNAMES, # axis label text
+    vlcex      = 0.85, # axis label font size
+    pcol       = c(COL_INST, COL_BENCHMARK), # polygon border colors
+    pfcol      = adjustcolor(c(COL_INST, COL_BENCHMARK), alpha.f = 0.25), # polygon fill (transparent)
+    plwd       = 2, # polygon border line width
+    cglcol     = "grey70", # grid line color
+    cglty      = 1, # grid line type (1 = solid)
+    axislabcol = "grey40", # axis scale label color
+    title      = paste("Qualitätsbewertung", yr) # plot title
   )
-  
+
   legend(
-    x      = "bottomleft",                   # legend position
-    legend = c("Alle KITAs", "Diese KITA"),  # legend labels
-    col    = c(COL_BENCHMARK, COL_INST),     # line colors matching the polygons
-    lwd    = 2,                              # line width in legend
-    bty    = "n",                            # no box around legend
-    cex    = 0.85                            # legend font size
+    x      = "bottomleft", # legend position
+    legend = c("Alle KITAs", "Diese KITA"), # legend labels
+    col    = c(COL_BENCHMARK, COL_INST), # line colors matching the polygons
+    lwd    = 2, # line width in legend
+    bty    = "n", # no box around legend
+    cex    = 0.85 # legend font size
   )
 }
 
