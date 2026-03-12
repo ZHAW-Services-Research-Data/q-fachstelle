@@ -1,9 +1,17 @@
-title: "SELE – Selbsteinschätzung der Qualität in Zürcher KITAs"
+title: "Selbsteinschätzung der Qualität in Zürcher KITAs"
 
-brand: "standard" # options are: standard | black
+header_links:
+  - label: "Datenschutz"
+    url: "https://www.zhaw.ch/de/datenschutz/"
+  - label: "Rechtliche Hinweise"
+    url: "https://www.zhaw.ch/de/rechtliche-hinweise/"
 
 legal_notice:
-  - "ZHAW Zürcher Hochschule für Angewandte Wissenschaften"
-  - "Soziale Arbeit"
-  - "Institut für Kindheit, Jugend und Familie"
-  - "Kontakt: Franziska Widmer, franziska.widmer@zhaw.ch"
+  institution: "ZHAW Zürcher Hochschule für Angewandte Wissenschaften"
+  unit:
+    label: "Qualitätsfachstelle für Zürcher Kitas"       # leave blank to hide
+    link_text: "ZHAW Website der Qualitätsfachstelle"   # optional: display text for the link
+    link_url: "https://www.zhaw.ch/de/sozialearbeit/qualitaet-in-zuercher-kitas"    # optional: URL for the link
+  department: "Departement Soziale Arbeit"
+  institute: "Institut für Kindheit, Jugend und Familie"
+  contact: "Kontakt: kita.fachstelle@zhaw.ch"

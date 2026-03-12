@@ -1,29 +1,34 @@
 /* Application Stylesheet.
-
-   Defines layout and structural styles for the ZHAW
-   Shiny dashboard template.
-
+   Defines layout and structural styles for the ZHAW Shiny dashboard template.
    This file contains presentation rules only.
-   Branding decisions and runtime logic are handled in R.
 */
-
 
 /* Design tokens (global spacing variables) */
 :root {
   --app-padding-y: 10px;
-  --app-padding-x: 20px;
+  --app-padding-x: 30px;
+  /* Bootstrap 5 primary color override — ZHAW blue */
+  --bs-blue: #0064a6;
+  --bs-primary: #0064a6;
+  /* Logo size and Schutzzone (= 1/3 of logo height on all sides, per ZHAW CD) */
+  --logo-height: 40px;
+  --schutzzone: calc(var(--logo-height) / 3);
 }
 
+/* Remove Bootstrap container-fluid padding so header/footer span full width */
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
 
 /* Global typography and base layout reset */
 html, body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif; /* Arial is mandatory per ZHAW CD */
   background-color: #ffffff;
   color: #000000;
   height: 100%;
   margin: 0;
 }
-
 
 /* Ensure Shiny elements inherit global typography */
 .container,
@@ -40,17 +45,15 @@ button {
   color: inherit;
 }
 
-
 /* Links */
 a {
-  color: #000000;
+  color: #0064a6; /* ZHAW blue */
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
 }
-
 
 /* Tabs */
 .nav-tabs {
@@ -63,9 +66,8 @@ a:hover {
 }
 
 .nav-tabs .nav-link.active {
-  border-bottom: 2px solid #000000;
+  border-bottom: 2px solid #0064a6; /* ZHAW blue */
 }
-
 
 /* Main application layout container */
 .app-page {
@@ -74,16 +76,52 @@ a:hover {
   flex-direction: column;
 }
 
-
 /* Header section containing logo and title */
 .app-header {
-  padding: var(--app-padding-y) var(--app-padding-x);
+  padding: 0;
   display: flex;
   align-items: center;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e6e6e6;
+  background-color: #0064a6; /* ZHAW blue */
 }
 
+/* Logo: Schutzzone = 1/3 of logo height on all sides (per ZHAW CD) */
+.app-logo {
+  height: var(--logo-height);
+  margin: var(--schutzzone);
+  display: block;
+}
+
+/* Title: white text on blue header; flex: 1 lets it compress so nav links stay visible */
+.app-title {
+  color: #ffffff;
+  margin: 0;
+  font-size: 3rem;
+  font-weight: normal;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Header nav links: pushed to the right, white, small */
+.app-header-nav {
+  margin-left: auto;
+  margin-right: var(--app-padding-x);
+  display: flex;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+.app-header-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.app-header-nav a:hover {
+  text-decoration: underline;
+}
 
 /* Main content wrapper between header and footer */
 .app-content {
@@ -91,14 +129,16 @@ a:hover {
   flex: 1; /* push footer to bottom */
 }
 
-
 /* Footer section containing legal and institutional information */
 .app-footer {
   padding: var(--app-padding-y) var(--app-padding-x);
   background-color: #ffffff;
-  border-top: 1px solid #e6e6e6;
   font-size: 12px;
-  line-height: 1;
+  line-height: 1.6;
   text-align: left;
-  color: #0064A8;
+  color: #000000;
+}
+
+.app-footer p {
+  margin: 0;
 }

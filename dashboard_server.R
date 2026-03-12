@@ -68,7 +68,7 @@ data <- raw |>
   filter(!code %in% EXCLUDE_CODES) |>
   mutate(
     year       = str_extract(datum, "20\\d{2}"),
-    code_clean = normalise_code(code)
+    code_clean = normalize_code(code)
   ) |>
   select(all_of(c(COLS_ID, COLS_QUALITY)))
 
@@ -89,7 +89,7 @@ data <- raw |>
 dashboard_server <- function(input, output, session) {
   observeEvent(input$lookup_btn, {
     # Clean user input and filter for the selected institution
-    inst_clean <- normalise_code(input$inst_code)
+    inst_clean <- normalize_code(input$inst_code)
 
     inst_data <- data |> filter(code_clean == inst_clean)
 
@@ -125,9 +125,13 @@ dashboard_server <- function(input, output, session) {
 
     # Tables --------------------------------------------------------------
 
-    output$result_heading <- renderUI(h3("Ergebnisse"))
+    output$result_heading <- renderUI(h3("Ihre Ergebnisse"))
     output$result_caption <- renderUI(tags$div(
-      "Die Tabelle zeigt die Mittelwerte der gefundenen Einträge für diesen Code."
+      tags$p("Die Tabelle zeigt die Mittelwerte der Selbsteinschätzungen für diesen KITA-Code sowie die Durchschnittswerte aller KITAs im gleichen Erhebungsjahr. Die Werte basieren auf einer Skala von 1 bis 5:"),
+      tags$p(tags$strong("1"), " bedeutet, dass in diesem Bereich ein Entwicklungsbedarf erkannt wurde – der Bereich wird bisher wenig berücksichtigt oder es besteht Potenzial zur Weiterentwicklung."),
+      tags$p(tags$strong("5"), " bedeutet, dass auf diesen Bereich bereits grosser Wert gelegt wird – die pädagogische Qualität in diesem Bereich ist gut ausgeprägt."),
+      tags$p("Werte dazwischen weisen auf eine teilweise Umsetzung hin. Ein Vergleich mit dem KITA-Durchschnitt gibt Hinweise darauf, wo die eigene Einrichtung im Verhältnis zu anderen steht."),
+      tags$br()
     ))
     output$result_table <- renderTable(
       inst_summary,
@@ -136,7 +140,8 @@ dashboard_server <- function(input, output, session) {
 
     output$overall_heading <- renderUI(h3("Durchschnittswerte aller erfassten KITAs"))
     output$overall_caption <- renderUI(tags$div(
-      "Diese Tabelle fasst die Mittelwerte aller KITAs zusammen, die im selben Jahr bzw. denselben Jahren Daten haben."
+      tags$p("Diese Tabelle fasst die Mittelwerte aller KITAs zusammen, die im selben Jahr bzw. denselben Jahren Daten haben."),
+      tags$br()
     ))
     output$overall_table <- renderTable(
       benchmark_summary,

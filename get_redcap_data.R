@@ -46,3 +46,5 @@ get_redcap_data <- function(secret_path = file.path("config", "secrets.yml")) {
   raw_csv <- httr::content(response, as = "text", encoding = "UTF-8")
   read.csv(text = raw_csv, stringsAsFactors = FALSE)
 }
+
+data <- get_redcap_data()
