@@ -42,7 +42,6 @@ get_redcap_data <- function(secret_path = file.path("config", "secrets.yml")) {
     returnFormat = "json"
   )
   response <- httr::POST(url, body = formData, encode = "form")
-  result <- httr::content(response)
 
   # <<<<<<<<<<<<>>>>>>>>>>>>>>>>>
 
