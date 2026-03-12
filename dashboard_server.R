@@ -59,20 +59,6 @@ COL_BENCHMARK <- "#DD8452"
 COL_INST <- "#8172B2"
 
 
-# Data loading & cleaning -------------------------------------------------
-
-raw <- get_redcap_data()
-
-data <- raw |>
-  filter(form_1_complete == "2") |>
-  filter(!code %in% EXCLUDE_CODES) |>
-  mutate(
-    year       = str_extract(datum, "20\\d{2}"),
-    code_clean = normalize_code(code)
-  ) |>
-  select(all_of(c(COLS_ID, COLS_QUALITY)))
-
-
 # Server ------------------------------------------------------------------
 
 #' Dashboard Server
@@ -88,6 +74,18 @@ data <- raw |>
 #' @return None. Registers reactive behaviour.
 dashboard_server <- function(input, output, session) {
   observeEvent(input$lookup_btn, {
+    # Fetch fresh data from REDCap on every lookup
+    raw <- get_redcap_data()
+
+    data <- raw |>
+      filter(form_1_complete == "2") |>
+      filter(!code %in% EXCLUDE_CODES) |>
+      mutate(
+        year       = str_extract(datum, "20\\d{2}"),
+        code_clean = normalize_code(code)
+      ) |>
+      select(all_of(c(COLS_ID, COLS_QUALITY)))
+
     # Clean user input and filter for the selected institution
     inst_clean <- normalize_code(input$inst_code)
 
