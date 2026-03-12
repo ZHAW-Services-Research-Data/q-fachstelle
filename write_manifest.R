@@ -23,10 +23,14 @@ rsconnect::writeManifest(
   appDir   = getwd(),
   appFiles = c(
     "app.R",
-    "server.R",
-    "ui.R",
+    "dashboard_server.R",
+    "dashboard_ui.R",
     "helpers.R",
-    "get_redcap_data.R"
+    "data_processing.R",
+    "get_redcap_data.R",
+    "template/layout.R",
+    "config.yml",
+    "www/logo-negativ.png"
   )
 )
 

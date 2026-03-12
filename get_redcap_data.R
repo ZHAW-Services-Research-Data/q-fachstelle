@@ -12,9 +12,14 @@ get_redcap_data <- function(secret_path = file.path("config", "secrets.yml")) {
   library(httr)
   library(yaml)
 
-  secrets <- yaml::read_yaml(secret_path)
-  token <- secrets$REDCAP_TOKEN
-  url <- secrets$REDCAP_URL
+  if (file.exists(secret_path)) {
+    secrets <- yaml::read_yaml(secret_path)
+    token <- secrets$REDCAP_TOKEN
+    url   <- secrets$REDCAP_URL
+  } else {
+    token <- Sys.getenv("REDCAP_TOKEN")
+    url   <- Sys.getenv("REDCAP_URL")
+  }
 
   stopifnot(!is.null(token), !is.null(url))
 
