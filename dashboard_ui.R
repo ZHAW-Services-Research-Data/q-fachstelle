@@ -13,13 +13,13 @@
 #' @return A Shiny UI object representing the dashboard content.
 dashboard_ui <- function() {
   tagList(
-    # Row 1: Input for KITA code and lookup button
+    # Row 1: Input for Kita code and lookup button
     fluidRow(
       column(
         width = 4,
         textInput(
           inputId = "inst_code",
-          label = "Bitte geben Sie Ihren KITA-Umfragecode ein:",
+          label = "Bitte geben Sie Ihren Kita-Umfragecode ein:",
         ),
         actionButton(
           inputId = "lookup_btn",

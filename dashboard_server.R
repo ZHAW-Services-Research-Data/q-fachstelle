@@ -125,10 +125,10 @@ dashboard_server <- function(input, output, session) {
 
     output$result_heading <- renderUI(h3("Ihre Ergebnisse"))
     output$result_caption <- renderUI(tags$div(
-      tags$p("Die Tabelle zeigt die Mittelwerte der Selbsteinschätzungen für diesen KITA-Code sowie die Durchschnittswerte aller KITAs im gleichen Erhebungsjahr. Die Werte basieren auf einer Skala von 1 bis 5:"),
+      tags$p("Die Tabelle zeigt die Mittelwerte der Selbsteinschätzungen für diesen Kita-Code sowie die Durchschnittswerte aller Kitas im gleichen Erhebungsjahr. Die Werte basieren auf einer Skala von 1 bis 5:"),
       tags$p(tags$strong("1"), " bedeutet, dass in diesem Bereich ein Entwicklungsbedarf erkannt wurde – der Bereich wird bisher wenig berücksichtigt oder es besteht Potenzial zur Weiterentwicklung."),
       tags$p(tags$strong("5"), " bedeutet, dass auf diesen Bereich bereits grosser Wert gelegt wird – die pädagogische Qualität in diesem Bereich ist gut ausgeprägt."),
-      tags$p("Werte dazwischen weisen auf eine teilweise Umsetzung hin. Ein Vergleich mit dem KITA-Durchschnitt gibt Hinweise darauf, wo die eigene Einrichtung im Verhältnis zu anderen steht."),
+      tags$p("Werte dazwischen weisen auf eine teilweise Umsetzung hin. Ein Vergleich mit dem Kita-Durchschnitt gibt Hinweise darauf, wo die eigene Einrichtung im Verhältnis zu anderen steht."),
       tags$br()
     ))
     output$result_table <- renderTable(
@@ -136,9 +136,9 @@ dashboard_server <- function(input, output, session) {
       sanitize.text.function = function(x) x
     )
 
-    output$overall_heading <- renderUI(h3("Durchschnittswerte aller erfassten KITAs"))
+    output$overall_heading <- renderUI(h3("Durchschnittswerte aller erfassten Kitas"))
     output$overall_caption <- renderUI(tags$div(
-      tags$p("Diese Tabelle fasst die Mittelwerte aller KITAs zusammen, die im selben Jahr bzw. denselben Jahren Daten haben."),
+      tags$p("Diese Tabelle fasst die Mittelwerte aller Kitas zusammen, die im selben Jahr bzw. denselben Jahren Daten haben."),
       tags$br()
     ))
     output$overall_table <- renderTable(
@@ -201,7 +201,7 @@ dashboard_server <- function(input, output, session) {
 
             legend(
               x      = "bottomleft", # legend position
-              legend = c("Alle KITAs", "Diese KITA"), # legend labels
+              legend = c("Alle Kitas", "Diese Kita"), # legend labels
               col    = c(COL_BENCHMARK, COL_INST), # line colours matching the polygons
               lwd    = 2, # line width in legend
               bty    = "n", # no box around legend
