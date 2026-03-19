@@ -1721,19 +1721,19 @@
       "checksum": "835e806c7fc80195b9e6f0c8d3c3d28f"
     },
     "config.yml": {
-      "checksum": "ad322a2388fd4a4cd637ceecd313f628"
+      "checksum": "3cfb473860af8c3858eb6838e36d0909"
     },
     "dashboard_server.R": {
-      "checksum": "9be191b7dfbbf863b8c811453539f4d5"
+      "checksum": "70056ae431e1a628adbebd4aa759b914"
     },
     "dashboard_ui.R": {
-      "checksum": "e42c3893fe90a2ddb85b2fb4d25caf20"
+      "checksum": "72a5d05103d8fee3fe620c9850c21490"
     },
     "data_processing.R": {
       "checksum": "809cca96e271a2f66052d7a115487dc8"
     },
     "get_redcap_data.R": {
-      "checksum": "3e10de6d939c1587db36244531ff862a"
+      "checksum": "c5e768ea287fed3866c99623d9f345a4"
     },
     "helpers.R": {
       "checksum": "8db0a2834253daa7c960fea5f6f34f4d"
@@ -1743,6 +1743,9 @@
     },
     "www/logo-negativ.png": {
       "checksum": "cb5e5cf9df76f0d7074c1216f4c0c8a7"
+    },
+    "www/style.css": {
+      "checksum": "c1800eddb8afc27de3b38f84b77789ad"
     }
   },
   "users": null

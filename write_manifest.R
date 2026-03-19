@@ -30,7 +30,8 @@ rsconnect::writeManifest(
     "get_redcap_data.R",
     "template/layout.R",
     "config.yml",
-    "www/logo-negativ.png"
+    "www/logo-negativ.png",
+    "www/style.css"
   )
 )
 
